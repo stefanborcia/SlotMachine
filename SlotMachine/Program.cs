@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SlotMachine
 {
@@ -10,29 +14,19 @@ namespace SlotMachine
             Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
 
             Random lineRandom =new Random();
-
-            int line1 = 3;
-            int[] arr = new int[line1]; 
-            for( int i = 0; i < arr.Length; i++)
+            int rows = 3;
+            int cols = 3;
+            int[,] arr = new int[rows, cols]; 
+            for( int i = 0; i < rows; i++)
             {
-                arr[i] = lineRandom.Next(1,8);
-                Console.Write(arr[i]);
+                for(int j = 0; j < cols; j++)
+                {
+                    arr[i, j] = lineRandom.Next(1, 8);
+                    Console.Write(arr[i, j] + " " );
+                }
+                Console.WriteLine(" ");
             }
-            Console.WriteLine();
-            int line2 = 3;
-            int[] arr2 = new int[line2];
-            for(int j = 0; j < arr2.Length; j++)
-            {
-                arr2[j] = lineRandom.Next(1, 8);
-                Console.Write(arr2[j]);
-            }
-            Console.WriteLine();
-            int line3 = 3;
-            int[] arr3 = new int[line3];
-            for(int k = 0; k < arr3.Length; k++)
-            {
-                Console.Write(arr3[k]);
-            }    
+            
         }
     }
 }
