@@ -53,7 +53,7 @@ namespace SlotMachine
                 if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
                 {
                     Console.WriteLine("***********");
-                    Console.WriteLine("You won 10$");
+                    Console.WriteLine("You won 3$");
                     number = number + 3;
                     Console.WriteLine("***********");
                 }
