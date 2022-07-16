@@ -64,6 +64,7 @@ namespace SlotMachine
                     number = number + 5;
                     Console.WriteLine("***********");
                 }
+                // check if diagonally they are the same
                 if (grid[0,0] == grid[1,1] && grid[1, 1] == grid[2, 2] || grid[2,0] == grid[1,1] && grid[1,1] == grid[0,2])
                 {
                     Console.WriteLine("***********");
@@ -71,6 +72,7 @@ namespace SlotMachine
                     number = number + 1;
                     Console.WriteLine("***********");
                 }
+                //Check if he wins Jackpot 7-7-7 
                 if (grid[0,0]==7 && grid[0,1] ==7 && grid[0,2] ==7)
                 {
                     Console.WriteLine("*********************************************");
@@ -97,7 +99,7 @@ namespace SlotMachine
                 Console.WriteLine("-----");
                 number--;
                 Console.WriteLine($"Your credit is : {number}$ ");
-
+                //askind user to pres spacebar to spin
                 if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
                 {
                     betting = true;
