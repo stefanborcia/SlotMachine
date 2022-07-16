@@ -96,7 +96,7 @@ namespace SlotMachine
                 Console.WriteLine($"Your Balance is : {number}$");
                 Console.WriteLine("-----");
                 number--;
-                Console.WriteLine($"You have credit: {number}$ ");
+                Console.WriteLine($"Your credit is : {number}$ ");
 
                 if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
                 {
