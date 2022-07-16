@@ -14,6 +14,9 @@ namespace SlotMachine
             Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
             Console.WriteLine("Enter how much money you want to spend: $");
+           
+
+            Console.WriteLine(" ");
             int number = 0;
             bool succes = int.TryParse(Console.ReadLine(), out number);
             if (!succes)
@@ -21,25 +24,27 @@ namespace SlotMachine
                 Console.WriteLine("Please enter a number ! ");
                 succes = true;
             }
-            Console.WriteLine(" ");
-
             Random lineRandom = new Random();
             int cols = 3;
             int rows = 3;
             bool betting = true;
+
             while (betting)
             {
+               
                 Console.WriteLine("-----");
                 int[,] grid = new int[cols, rows];
+
                 for (int i = 0; i < cols; i++)
                 {
                     for (int j = 0; j < rows; j++)
                     {
-                        grid[i, j] = lineRandom.Next(1, 8);
+                        grid[i, j] = lineRandom.Next(1, 10);
                         Console.Write(grid[i, j] + " ");
                     }
                     Console.WriteLine(" ");
                 }
+                //Create if statements which check if the middle line is the same
                 if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
                 {
                     Console.WriteLine($"Total win is: {number}$ ");
@@ -72,8 +77,26 @@ namespace SlotMachine
                 if (number <= 0)
                 {
                     Console.WriteLine("You are out of money ");
-                    betting = false;
+                    //ask to play again 
+                    Console.WriteLine("Would you like to add more money? Y or N ");
+                    string response = Console.ReadLine();
+                    
+                    if (response != "n")
+                    {
+                        betting = true;
+                        Console.WriteLine("I wish you good luck !");
+                        Console.WriteLine("How much you would like to play this time ?");
+                        int betAgain = Convert.ToInt32(Console.ReadLine());
+                        number = betAgain;
+                    }
+                    else
+                    {
+                        betting = false;
+                        Console.WriteLine("Thank you for playing !");
+                        Console.WriteLine("Maybe next time more luck !");
+                    }
                 }
+
             }
 
         }
