@@ -15,8 +15,6 @@ namespace SlotMachine
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
             Console.WriteLine("Enter how much money you want to spend: $");
            
-
-            Console.WriteLine(" ");
             int number = 0;
             bool succes = int.TryParse(Console.ReadLine(), out number);
             if (!succes)
@@ -39,7 +37,7 @@ namespace SlotMachine
                 {
                     for (int j = 0; j < rows; j++)
                     {
-                        grid[i, j] = lineRandom.Next(1, 10);
+                        grid[i, j] = lineRandom.Next(1, 8);
                         Console.Write(grid[i, j] + " ");
                     }
                     Console.WriteLine(" ");
@@ -47,19 +45,55 @@ namespace SlotMachine
                 //Create if statements which check if the middle line is the same
                 if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
                 {
-                    Console.WriteLine($"Total win is: {number}$ ");
+                    Console.WriteLine("***********");
+                    Console.WriteLine("You won 7$");
                     number = number + 7;
+                    Console.WriteLine("***********");
                 }
                 if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
                 {
-                    Console.WriteLine($"Total win is: {number}$ ");
-                    number = number + 10;
+                    Console.WriteLine("***********");
+                    Console.WriteLine("You won 10$");
+                    number = number + 3;
+                    Console.WriteLine("***********");
                 }
                 if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
                 {
-                    Console.WriteLine($"Total win is: {number}$");
+                    Console.WriteLine("***********");
+                    Console.WriteLine("You won 5$");
                     number = number + 5;
+                    Console.WriteLine("***********");
                 }
+                if (grid[0,0] == grid[1,1] && grid[1, 1] == grid[2, 2] || grid[2,0] == grid[1,1] && grid[1,1] == grid[0,2])
+                {
+                    Console.WriteLine("***********");
+                    Console.WriteLine("You won 1$");
+                    number = number + 1;
+                    Console.WriteLine("***********");
+                }
+                if (grid[0,0]==7 && grid[0,1] ==7 && grid[0,2] ==7)
+                {
+                    Console.WriteLine("*********************************************");
+                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
+                    number = number + 10;
+                    Console.WriteLine("**********************************************");
+                }
+                if (grid[2, 0] == 7 && grid[2, 1] == 7 && grid[2, 2] == 7)
+                {
+                    Console.WriteLine("**********************************************");
+                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
+                    number = number + 10;
+                    Console.WriteLine("**********************************************");
+                }
+                if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
+                {
+                    Console.WriteLine("**********************************************");
+                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
+                    number = number + 10;
+                    Console.WriteLine("**********************************************");
+                }
+                Console.WriteLine("-----");
+                Console.WriteLine($"Your Balance is : {number}$");
                 Console.WriteLine("-----");
                 number--;
                 Console.WriteLine($"You have credit: {number}$ ");
