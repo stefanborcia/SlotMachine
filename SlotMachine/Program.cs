@@ -15,8 +15,8 @@ namespace SlotMachine
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
             Console.WriteLine("Enter how much money you want to spend: $");
            
-            int number = 0;
-            bool succes = int.TryParse(Console.ReadLine(), out number);
+            int credit = 0;
+            bool succes = int.TryParse(Console.ReadLine(), out credit);
             if (!succes)
             {
                 Console.WriteLine("Please enter a number ! ");
@@ -47,21 +47,21 @@ namespace SlotMachine
                 {
                     Console.WriteLine("***********");
                     Console.WriteLine("You won 7$");
-                    number = number + 7;
+                    credit = credit + 7;
                     Console.WriteLine("***********");
                 }
                 if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
                 {
                     Console.WriteLine("***********");
                     Console.WriteLine("You won 3$");
-                    number = number + 3;
+                    credit = credit + 3;
                     Console.WriteLine("***********");
                 }
                 if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
                 {
                     Console.WriteLine("***********");
                     Console.WriteLine("You won 5$");
-                    number = number + 5;
+                    credit = credit + 5;
                     Console.WriteLine("***********");
                 }
                 // check if diagonally they are the same
@@ -69,7 +69,7 @@ namespace SlotMachine
                 {
                     Console.WriteLine("***********");
                     Console.WriteLine("You won 1$");
-                    number = number + 1;
+                    credit = credit + 1;
                     Console.WriteLine("***********");
                 }
                 //Check if he wins Jackpot 7-7-7 
@@ -77,28 +77,28 @@ namespace SlotMachine
                 {
                     Console.WriteLine("*********************************************");
                     Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
-                    number = number + 10;
+                    credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
                 if (grid[2, 0] == 7 && grid[2, 1] == 7 && grid[2, 2] == 7)
                 {
                     Console.WriteLine("**********************************************");
                     Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
-                    number = number + 10;
+                    credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
                 if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
                 {
                     Console.WriteLine("**********************************************");
                     Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
-                    number = number + 10;
+                    credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
                 Console.WriteLine("-----");
-                Console.WriteLine($"Your Balance is : {number}$");
+                Console.WriteLine($"Your Balance is : {credit}$");
                 Console.WriteLine("-----");
-                number--;
-                Console.WriteLine($"Your credit is : {number}$ ");
+                credit--;
+                Console.WriteLine($"Your credit is : {credit}$ ");
                 //askind user to pres spacebar to spin
                 if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
                 {
@@ -110,7 +110,7 @@ namespace SlotMachine
                     Console.WriteLine("You need to press the SpaceBar on keyboard to play");
                     betting = true;
                 }
-                if (number <= 0)
+                if (credit <= 0)
                 {
                     Console.WriteLine("You are out of money ");
                     //ask to play again 
@@ -123,7 +123,7 @@ namespace SlotMachine
                         Console.WriteLine("I wish you good luck !");
                         Console.WriteLine("How much you would like to play this time ?");
                         int betAgain = Convert.ToInt32(Console.ReadLine());
-                        number = betAgain;
+                        credit = betAgain;
                     }
                     else
                     {
