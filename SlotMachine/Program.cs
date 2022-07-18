@@ -52,33 +52,28 @@ namespace SlotMachine
                 }
                 if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
                 {
-                    Console.WriteLine("***********");
-                    Console.WriteLine("You won 3$");
-                    credit = credit + 3;
-                    Console.WriteLine("***********");
+                    win = true;
+                    winValue = 3;
                 }
                 if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
                 {
-                    Console.WriteLine("***********");
-                    Console.WriteLine("You won 5$");
-                    credit = credit + 5;
-                    Console.WriteLine("***********");
+                    win = true;
+                    winValue = 5;
                 }
 
+                
+                // check if diagonally they are the same
+                if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
+                    || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
+                {
+                    win = true;
+                    winValue = 1;
+                }
                 if (win == true)
                 {
                     Console.WriteLine("***********");
-                    Console.WriteLine($"You won {winValue}");
+                    Console.WriteLine($"You won {winValue}$");
                     credit = credit + winValue;
-                    Console.WriteLine("***********");
-                }
-                // check if diagonally they are the same
-                if (   grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2] 
-                    || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
-                {
-                    Console.WriteLine("***********");
-                    Console.WriteLine("You won 1$");
-                    credit = credit + 1;
                     Console.WriteLine("***********");
                 }
                 //Check if he wins Jackpot 7-7-7 
@@ -89,8 +84,8 @@ namespace SlotMachine
                     credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
-                if (   grid[2, 0] == 7 
-                    && grid[2, 1] == 7 
+                if (grid[2, 0] == 7
+                    && grid[2, 1] == 7
                     && grid[2, 2] == 7)
                 {
                     Console.WriteLine("**********************************************");
