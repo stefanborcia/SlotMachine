@@ -102,10 +102,11 @@ namespace SlotMachine
                     credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
+                credit--;
                 Console.WriteLine("-----");
                 Console.WriteLine($"Your Balance is : {credit}$");
                 Console.WriteLine("-----");
-                credit--;
+                
                 //askind user to pres spacebar to spin
                 if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
                 {
