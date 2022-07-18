@@ -125,7 +125,7 @@ namespace SlotMachine
                     Console.WriteLine("Would you like to add more money? Y or N ");
                     string response = Console.ReadLine();
                     response = response.ToLower();
-                    if (response != "n")
+                    if (response == "y")
                     {
                         betting = true;
                         Console.WriteLine("I wish you good luck !");
