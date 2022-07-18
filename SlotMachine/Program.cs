@@ -37,7 +37,7 @@ namespace SlotMachine
                 {
                     for (int j = 0; j < rows; j++)
                     {
-                        grid[i, j] = lineRandom.Next(1, 8);
+                        grid[i, j] = lineRandom.Next(1, 5);
                         Console.Write(grid[i, j] + " ");
                     }
                     Console.WriteLine(" ");
