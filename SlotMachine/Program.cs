@@ -77,26 +77,28 @@ namespace SlotMachine
                     Console.WriteLine("***********");
                 }
                 //Check if he wins Jackpot 7-7-7 
+                bool jackpot = false;
                 if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
                 {
-                    Console.WriteLine("*********************************************");
-                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
-                    credit = credit + 10;
-                    Console.WriteLine("**********************************************");
+                    jackpot = true;
+                    credit = credit + 10;                   
                 }
                 if (grid[2, 0] == 7
                     && grid[2, 1] == 7
                     && grid[2, 2] == 7)
                 {
-                    Console.WriteLine("**********************************************");
-                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
+                    jackpot = true;
                     credit = credit + 10;
-                    Console.WriteLine("**********************************************");
                 }
                 if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
                 {
-                    Console.WriteLine("**********************************************");
-                    Console.WriteLine(" Congratulation !!!  Jackpot !!! You won 10$");
+                    jackpot = true;
+                    credit = credit + 10;
+                }
+                if(jackpot == true)
+                {
+                    Console.WriteLine("*********************************************");
+                    Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");
                     credit = credit + 10;
                     Console.WriteLine("**********************************************");
                 }
