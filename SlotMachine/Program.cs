@@ -124,7 +124,7 @@ namespace SlotMachine
                     //ask to play again 
                     Console.WriteLine("Would you like to add more money? Y or N ");
                     string response = Console.ReadLine();
-
+                    response = response.ToLower();
                     if (response != "n")
                     {
                         betting = true;
