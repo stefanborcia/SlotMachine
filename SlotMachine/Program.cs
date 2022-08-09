@@ -73,7 +73,9 @@ namespace SlotMachine
                 {
                     Console.WriteLine("***********");
                     Console.WriteLine($"You won {winValue}$");
-                    credit = credit + winValue;
+                    // credit = credit + winValue;
+                    //try to use method
+                    ReturnCredit(credit, winValue);
                     Console.WriteLine("***********");
                 }
                 //Check if he wins Jackpot 7-7-7 
@@ -142,7 +144,11 @@ namespace SlotMachine
                 }
 
             }
-
+            static int ReturnCredit(int credit, int winValue)
+            {
+                 credit = credit + winValue;
+                 return credit;
+            }
         }
     }
 }
