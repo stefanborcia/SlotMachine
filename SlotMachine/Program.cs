@@ -113,9 +113,7 @@ namespace SlotMachine
                 }
                 if (credit <= 0)
                 {
-                    Console.WriteLine("You are out of money ");
-                    //ask to play again 
-                    Console.WriteLine("Would you like to add more money? Y or N ");
+                    NoMoreMoneyOrPlayAgain();
                     string response = Console.ReadLine();
                     response = response.ToLower();
                     if (response == "y")
@@ -171,6 +169,11 @@ namespace SlotMachine
                 Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
                 Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
                 Console.WriteLine("Enter how much money you want to spend: $");
+            }
+            static void NoMoreMoneyOrPlayAgain()
+            {
+                Console.WriteLine("You are out of money ");
+                Console.WriteLine("Would you like to add more money? Y or N ");
             }
             /*static void CheckMiddleLine(int[,]grid, bool win, int winValue)
             {
