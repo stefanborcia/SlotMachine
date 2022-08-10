@@ -11,9 +11,7 @@ namespace SlotMachine
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
-            Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
-            Console.WriteLine("Enter how much money you want to spend: $");
+            InformationForUserWelcome();
 
             int credit = 0;
             bool succes = int.TryParse(Console.ReadLine(), out credit);
@@ -110,8 +108,7 @@ namespace SlotMachine
                 }
                 else
                 {
-                    Console.WriteLine(" ");
-                    Console.WriteLine("You need to press the SpaceBar on keyboard to play");
+                    PlayOnSpaceBar();
                     betting = true;
                 }
                 if (credit <= 0)
@@ -124,16 +121,14 @@ namespace SlotMachine
                     if (response == "y")
                     {
                         betting = true;
-                        Console.WriteLine("I wish you good luck !");
-                        Console.WriteLine("How much you would like to play this time ?");
+                        PlayingAgainMessage();
                         int betAgain = Convert.ToInt32(Console.ReadLine());
                         credit = betAgain;
                     }
                     else
                     {
                         betting = false;
-                        Console.WriteLine("Thank you for playing !");
-                        Console.WriteLine("Maybe next time more luck !");
+                        ByeByeMessage();
                     }
                 }
 
@@ -155,6 +150,27 @@ namespace SlotMachine
                 Console.WriteLine("-----");
                 Console.WriteLine($"Your Balance is : {credit}$");
                 Console.WriteLine("-----");
+            }
+            static void ByeByeMessage()
+            {
+                Console.WriteLine("Thank you for playing !");
+                Console.WriteLine("Maybe next time more luck !");
+            }
+            static void PlayingAgainMessage()
+            {
+                Console.WriteLine("I wish you good luck !");
+                Console.WriteLine("How much you would like to play this time ?");
+            }
+            static void PlayOnSpaceBar()
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("You need to press the SpaceBar on keyboard to play");
+            }
+            static void InformationForUserWelcome()
+            {
+                Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
+                Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
+                Console.WriteLine("Enter how much money you want to spend: $");
             }
             /*static void CheckMiddleLine(int[,]grid, bool win, int winValue)
             {
