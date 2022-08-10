@@ -60,8 +60,8 @@ namespace SlotMachine
                     win = true;
                     winValue = 5;
                 }
-
                 
+
                 // check if diagonally they are the same
                 if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
                     || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
@@ -71,12 +71,8 @@ namespace SlotMachine
                 }
                 if (win == true)
                 {
-                    Console.WriteLine("***********");
-                    Console.WriteLine($"You won {winValue}$");
-                    // credit = credit + winValue;
-                    //try to use method
-                    ReturnCredit(credit, winValue);
-                    Console.WriteLine("***********");
+                    credit = credit + winValue;
+                    PrintLineWon(winValue);
                 }
                 //Check if he wins Jackpot 7-7-7 
                 bool jackpot = false;
@@ -99,10 +95,12 @@ namespace SlotMachine
                 }
                 if(jackpot == true)
                 {
-                    Console.WriteLine("*********************************************");
-                    Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");
+                    /* Console.WriteLine("*********************************************");
+                     Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");
+                     credit = credit + 10;
+                     Console.WriteLine("**********************************************"); */
+                    PrintJackpot(winValue);
                     credit = credit + 10;
-                    Console.WriteLine("**********************************************");
                 }
                 credit--;
                 Console.WriteLine("-----");
@@ -144,10 +142,20 @@ namespace SlotMachine
                 }
 
             }
-            static int ReturnCredit(int credit, int winValue)
+            static  int PrintLineWon (int winValue)
             {
-                 credit = credit + winValue;
-                 return credit;
+                Console.WriteLine("***********");
+                Console.WriteLine($"You won {winValue}$");
+                Console.WriteLine("***********");
+                return winValue;
+            }
+            static int PrintJackpot(int winValue)
+            {
+                Console.WriteLine("*********************************************");
+                Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");
+                
+                Console.WriteLine("**********************************************");
+                return winValue;
             }
         }
     }
