@@ -139,7 +139,7 @@ namespace SlotMachine
                 Console.WriteLine("You are out of money ");
                 Console.WriteLine("Would you like to add more money? Y or N ");
             }
-            static void CheckMiddleLine(int[,] grid,bool win , int winValue)
+            static int CheckMiddleLine(int[,] grid,bool win , int winValue)
             {
                 if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
                 {
@@ -156,8 +156,9 @@ namespace SlotMachine
                     win = true;
                     winValue = 5;
                 }
+                return winValue;
             }
-            static void CheckDiagonalLine(int[,] grid, bool win, int winValue)
+            static int CheckDiagonalLine(int[,] grid, bool win, int winValue)
             {
                 if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
                     || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
@@ -165,8 +166,9 @@ namespace SlotMachine
                     win = true;
                     winValue = 1;
                 }
+                return winValue;
             }
-            static void JackPotWin(int[,] grid, bool jackpot,int credit)
+            static int JackPotWin(int[,] grid, bool jackpot,int credit)
             {
                 if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
                 {
@@ -185,7 +187,7 @@ namespace SlotMachine
                     jackpot = true;
                     credit = credit + 10;
                 }
-
+                return credit;
             }
         }
     }
