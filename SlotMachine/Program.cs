@@ -42,33 +42,11 @@ namespace SlotMachine
                 }
                 bool win = false;
                 int winValue = 0;
-                //CheckMiddleLine(int[0,2],true, winValue);
-                //Create if statements which check if the middle line is the same
-                /*
-                if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
-                {
-                    win = true;
-                    winValue = 7;
-                }
-                if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
-                {
-                    win = true;
-                    winValue = 3;
-                }
-                if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
-                {
-                    win = true;
-                    winValue = 5;
-                }
-                */
+                CheckMiddleLine(grid, true, 5);
 
                 // check if diagonally they are the same
-                if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
-                    || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
-                {
-                    win = true;
-                    winValue = 1;
-                }
+                CheckDiagonalLine(grid, true, 1);
+                
                 if (win == true)
                 {
                     credit = credit + winValue;
@@ -76,28 +54,14 @@ namespace SlotMachine
                 }
                 //Check if he wins Jackpot 7-7-7 
                 bool jackpot = false;
-                if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;                   
-                }
-                if (grid[2, 0] == 7
-                    && grid[2, 1] == 7
-                    && grid[2, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;
-                }
-                if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;
-                }
-                if(jackpot == true)
+                JackPotWin(grid, true, 10);
+
+                if (jackpot == true)
                 {
                     PrintJackpot(winValue);
                     credit = credit + 10;
                 }
+
                 credit--;
                 BalanceCredit(credit);
                 
@@ -175,7 +139,7 @@ namespace SlotMachine
                 Console.WriteLine("You are out of money ");
                 Console.WriteLine("Would you like to add more money? Y or N ");
             }
-            /*static void CheckMiddleLine(int[,]grid, bool win, int winValue)
+            static void CheckMiddleLine(int[,] grid,bool win , int winValue)
             {
                 if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
                 {
@@ -192,7 +156,37 @@ namespace SlotMachine
                     win = true;
                     winValue = 5;
                 }
-            }*/
+            }
+            static void CheckDiagonalLine(int[,] grid, bool win, int winValue)
+            {
+                if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
+                    || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
+                {
+                    win = true;
+                    winValue = 1;
+                }
+            }
+            static void JackPotWin(int[,] grid, bool jackpot,int credit)
+            {
+                if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
+                {
+                    jackpot = true;
+                    credit = credit + 10;
+                }
+                if (grid[2, 0] == 7
+                    && grid[2, 1] == 7
+                    && grid[2, 2] == 7)
+                {
+                    jackpot = true;
+                    credit = credit + 10;
+                }
+                if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
+                {
+                    jackpot = true;
+                    credit = credit + 10;
+                }
+
+            }
         }
     }
 }
