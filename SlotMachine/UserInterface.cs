@@ -40,8 +40,8 @@ namespace SlotMachine
         }
         public static void PlayAgainMessage()
         {
-            Console.WriteLine("Thank you for playing !");
-            Console.WriteLine("Maybe next time more luck !");
+            Console.WriteLine("We wish you best of luck !");
+            Console.WriteLine("How much you would like to play this time: ");
         }
         public static void OutOfMoneyOrPutMoreMoney()
         {
