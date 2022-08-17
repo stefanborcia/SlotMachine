@@ -11,7 +11,7 @@ namespace SlotMachine
         static void Main(string[] args)
         {
 
-            InformationForUserWelcome();
+            UserInterface.DisplayWelcomeAndInfo();
 
             int credit = 0;
             bool succes = int.TryParse(Console.ReadLine(), out credit);
@@ -20,17 +20,17 @@ namespace SlotMachine
                 Console.WriteLine("Please enter a number ! ");
                 succes = true;
             }
-            Random lineRandom = new Random();
-            int cols = 3;
-            int rows = 3;
+
             bool betting = true;
 
             while (betting)
             {
-
+                Random lineRandom = new Random();
+                int cols = 3;
+                int rows = 3;
                 Console.WriteLine("-----");
                 int[,] grid = new int[cols, rows];
-
+                int winValue = 0;
                 for (int i = 0; i < cols; i++)
                 {
                     for (int j = 0; j < rows; j++)
@@ -40,31 +40,49 @@ namespace SlotMachine
                     }
                     Console.WriteLine(" ");
                 }
-                bool win = false;
-                int winValue = 0;
-                CheckMiddleLine(grid, true, 5);
+                int horizontalWinings = CalculateHorizontalWinnings(grid, winValue);
 
+                if(horizontalWinings > 0)
+                {
+                    credit = credit + winValue;
+                    UserInterface.PrintLineWining(winValue);
+                }
+                    
                 // check if diagonally they are the same
-                CheckDiagonalLine(grid, true, 1);
-                
+                bool win = CheckDiagonalLine(grid);
+
                 if (win == true)
                 {
                     credit = credit + winValue;
-                    PrintLineWon(winValue);
+                    UserInterface.PrintLineWining(winValue);                   
                 }
                 //Check if he wins Jackpot 7-7-7 
-                bool jackpot = false;
-                JackPotWin(grid, true, 10);
-
+                bool jackpot = CheckJackpotWin(grid);              
+                //if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
+                //{
+                //    jackpot = true;
+                //    credit = credit + 10;
+                //}
+                //if (grid[2, 0] == 7
+                //    && grid[2, 1] == 7
+                //    && grid[2, 2] == 7)
+                //{
+                //    jackpot = true;
+                //    credit = credit + 10;
+                //}
+                //if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
+                //{
+                //    jackpot = true;
+                //    credit = credit + 10;
+                //}
                 if (jackpot == true)
                 {
-                    PrintJackpot(winValue);
+                    UserInterface.PrintJackpotWin(winValue);  
                     credit = credit + 10;
                 }
-
                 credit--;
-                BalanceCredit(credit);
-                
+                UserInterface.YourBalanceIs(credit);
+
                 //askind user to pres spacebar to spin
                 if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
                 {
@@ -72,123 +90,80 @@ namespace SlotMachine
                 }
                 else
                 {
-                    PlayOnSpaceBar();
+                    Console.WriteLine(" ");
+                    Console.WriteLine("You need to press the SpaceBar on keyboard to play");
                     betting = true;
                 }
                 if (credit <= 0)
                 {
-                    NoMoreMoneyOrPlayAgain();
+                    Console.WriteLine("You are out of money ");
+                    //ask to play again 
+                    Console.WriteLine("Would you like to add more money? Y or N ");
                     string response = Console.ReadLine();
                     response = response.ToLower();
                     if (response == "y")
                     {
                         betting = true;
-                        PlayingAgainMessage();
+                        Console.WriteLine("I wish you good luck !");
+                        Console.WriteLine("How much you would like to play this time ?");
                         int betAgain = Convert.ToInt32(Console.ReadLine());
                         credit = betAgain;
                     }
                     else
                     {
                         betting = false;
-                        ByeByeMessage();
+                        Console.WriteLine("Thank you for playing !");
+                        Console.WriteLine("Maybe next time more luck !");
                     }
                 }
 
             }
-            static void PrintLineWon (int winValue)
+        }
+        static int CalculateHorizontalWinnings(int[,] grid, int winValue)
+        {
+            if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
             {
-                Console.WriteLine("***********");
-                Console.WriteLine($"You won {winValue}$");
-                Console.WriteLine("***********");
+                 winValue = 3;
             }
-            static void PrintJackpot(int winValue)
+            if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
             {
-                Console.WriteLine("*********************************************");
-                Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");               
-                Console.WriteLine("**********************************************");
+                winValue = 7;
             }
-            static void BalanceCredit(int credit)
+            if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
             {
-                Console.WriteLine("-----");
-                Console.WriteLine($"Your Balance is : {credit}$");
-                Console.WriteLine("-----");
+                winValue = 5;
             }
-            static void ByeByeMessage()
-            {
-                Console.WriteLine("Thank you for playing !");
-                Console.WriteLine("Maybe next time more luck !");
-            }
-            static void PlayingAgainMessage()
-            {
-                Console.WriteLine("I wish you good luck !");
-                Console.WriteLine("How much you would like to play this time ?");
-            }
-            static void PlayOnSpaceBar()
-            {
-                Console.WriteLine(" ");
-                Console.WriteLine("You need to press the SpaceBar on keyboard to play");
-            }
-            static void InformationForUserWelcome()
-            {
-                Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
-                Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
-                Console.WriteLine("Enter how much money you want to spend: $");
-            }
-            static void NoMoreMoneyOrPlayAgain()
-            {
-                Console.WriteLine("You are out of money ");
-                Console.WriteLine("Would you like to add more money? Y or N ");
-            }
-            static int CheckMiddleLine(int[,] grid,bool win , int winValue)
-            {
-                if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
-                {
-                    win = true;
-                    winValue = 7;
-                }
-                if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
-                {
-                    win = true;
-                    winValue = 3;
-                }
-                if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
-                {
-                    win = true;
-                    winValue = 5;
-                }
-                return winValue;
-            }
-            static int CheckDiagonalLine(int[,] grid, bool win, int winValue)
-            {
-                if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
+            return winValue;
+        }
+
+        static bool CheckDiagonalLine(int[,]grid)
+        {
+            if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
                     || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
-                {
-                    win = true;
-                    winValue = 1;
-                }
-                return winValue;
-            }
-            static int JackPotWin(int[,] grid, bool jackpot,int credit)
             {
-                if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;
-                }
-                if (grid[2, 0] == 7
-                    && grid[2, 1] == 7
-                    && grid[2, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;
-                }
-                if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
-                {
-                    jackpot = true;
-                    credit = credit + 10;
-                }
-                return credit;
+                return true;
             }
+            else
+            {
+                return false;
+            }
+            
+        }
+        static bool CheckJackpotWin(int[,] grid)
+        {
+
+            if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7
+                || grid[2, 0] == 7 && grid[2, 1] == 7 && grid[2, 2] == 7
+                || grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
+
