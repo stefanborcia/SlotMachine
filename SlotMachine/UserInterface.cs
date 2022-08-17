@@ -33,5 +33,25 @@ namespace SlotMachine
             Console.WriteLine("**********************************************");
 
         }
+        public static void ByeByeMessage()
+        {
+            Console.WriteLine("Thank you for playing !");
+            Console.WriteLine("Maybe next time more luck !");
+        }
+        public static void PlayAgainMessage()
+        {
+            Console.WriteLine("Thank you for playing !");
+            Console.WriteLine("Maybe next time more luck !");
+        }
+        public static void OutOfMoneyOrPutMoreMoney()
+        {
+            Console.WriteLine("You are out of money ");
+            Console.WriteLine("Would you like to add more money? Y or N ");
+        }
+        public static void PressSpaceBar()
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine("You need to press the SpaceBar on keyboard to play");
+        }
     }
 }

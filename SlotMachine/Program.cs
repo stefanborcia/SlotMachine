@@ -44,8 +44,9 @@ namespace SlotMachine
 
                 if(horizontalWinings > 0)
                 {
-                    credit = credit + winValue;
+                    
                     UserInterface.PrintLineWining(winValue);
+                    credit = credit + winValue;
                 }
                     
                 // check if diagonally they are the same
@@ -90,30 +91,25 @@ namespace SlotMachine
                 }
                 else
                 {
-                    Console.WriteLine(" ");
-                    Console.WriteLine("You need to press the SpaceBar on keyboard to play");
+                    UserInterface.PressSpaceBar();
                     betting = true;
                 }
                 if (credit <= 0)
                 {
-                    Console.WriteLine("You are out of money ");
-                    //ask to play again 
-                    Console.WriteLine("Would you like to add more money? Y or N ");
+                    UserInterface.OutOfMoneyOrPutMoreMoney();
                     string response = Console.ReadLine();
                     response = response.ToLower();
                     if (response == "y")
                     {
                         betting = true;
-                        Console.WriteLine("I wish you good luck !");
-                        Console.WriteLine("How much you would like to play this time ?");
+                        UserInterface.PlayAgainMessage();
                         int betAgain = Convert.ToInt32(Console.ReadLine());
                         credit = betAgain;
                     }
                     else
                     {
                         betting = false;
-                        Console.WriteLine("Thank you for playing !");
-                        Console.WriteLine("Maybe next time more luck !");
+                        UserInterface.ByeByeMessage();
                     }
                 }
 
