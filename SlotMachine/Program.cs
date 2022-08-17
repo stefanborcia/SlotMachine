@@ -31,6 +31,7 @@ namespace SlotMachine
                 Console.WriteLine("-----");
                 int[,] grid = new int[cols, rows];
                 int winValue = 0;
+
                 for (int i = 0; i < cols; i++)
                 {
                     for (int j = 0; j < rows; j++)
@@ -40,19 +41,10 @@ namespace SlotMachine
                     }
                     Console.WriteLine(" ");
                 }
-                int horizontalWinings = CalculateHorizontalWinnings(grid, winValue);
+                //Check Horizontal Winings
+                winValue = CalculateLineWinings(grid);
 
-                if(horizontalWinings > 0)
-                {
-                    
-                    UserInterface.PrintLineWining(winValue);
-                    credit = credit + winValue;
-                }
-                    
-                // check if diagonally they are the same
-                bool win = CheckDiagonalLine(grid);
-
-                if (win == true)
+                if ( winValue > 0)
                 {
                     credit = credit + winValue;
                     UserInterface.PrintLineWining(winValue);                   
@@ -112,39 +104,24 @@ namespace SlotMachine
                         UserInterface.ByeByeMessage();
                     }
                 }
-
             }
         }
-        static int CalculateHorizontalWinnings(int[,] grid, int winValue)
-        {
+        static int CalculateLineWinings(int[,] grid)
+        {          
             if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
             {
-                 winValue = 3;
+                return 3;
             }
             if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
             {
-                winValue = 7;
+                return  7;
             }
             if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
             {
-                winValue = 5;
+                return  5;
             }
-            return winValue;
-        }
-
-        static bool CheckDiagonalLine(int[,]grid)
-        {
-            if (grid[0, 0] == grid[1, 1] && grid[1, 1] == grid[2, 2]
-                    || grid[2, 0] == grid[1, 1] && grid[1, 1] == grid[0, 2])
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
-        }
+            return 0;
+        }           
         static bool CheckJackpotWin(int[,] grid)
         {
 
