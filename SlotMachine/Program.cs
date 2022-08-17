@@ -92,7 +92,7 @@ namespace SlotMachine
                 else
                 {
                     UserInterface.PressSpaceBar();
-                    betting = true;
+                    betting = false;
                 }
                 if (credit <= 0)
                 {
