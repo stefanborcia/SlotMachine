@@ -51,23 +51,6 @@ namespace SlotMachine
                 }
                 //Check if he wins Jackpot 7-7-7 
                 bool jackpot = CheckJackpotWin(grid);              
-                //if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7)
-                //{
-                //    jackpot = true;
-                //    credit = credit + 10;
-                //}
-                //if (grid[2, 0] == 7
-                //    && grid[2, 1] == 7
-                //    && grid[2, 2] == 7)
-                //{
-                //    jackpot = true;
-                //    credit = credit + 10;
-                //}
-                //if (grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
-                //{
-                //    jackpot = true;
-                //    credit = credit + 10;
-                //}
                 if (jackpot == true)
                 {
                     UserInterface.PrintJackpotWin(winValue);  
