@@ -42,7 +42,7 @@ namespace SlotMachine
                     Console.WriteLine(" ");
                 }
                 //Check Horizontal Winings
-                winValue = CalculateLineWinings(grid);
+                winValue = LogicMethods.CalculateLineWinings(grid);
 
                 if ( winValue > 0)
                 {
@@ -50,7 +50,8 @@ namespace SlotMachine
                     UserInterface.PrintLineWining(winValue);                   
                 }
                 //Check if he wins Jackpot 7-7-7 
-                bool jackpot = CheckJackpotWin(grid);              
+                bool jackpot = LogicMethods.CheckJackpotWin(grid);              
+
                 if (jackpot == true)
                 {
                     UserInterface.PrintJackpotWin(winValue);  
@@ -89,37 +90,8 @@ namespace SlotMachine
                 }
             }
         }
-        static int CalculateLineWinings(int[,] grid)
-        {          
-            if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2])
-            {
-                return 3;
-            }
-            if (grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2])
-            {
-                return  7;
-            }
-            if (grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
-            {
-                return  5;
-            }
-            return 0;
-        }           
-        static bool CheckJackpotWin(int[,] grid)
-        {
-
-            if (grid[0, 0] == 7 && grid[0, 1] == 7 && grid[0, 2] == 7
-                || grid[2, 0] == 7 && grid[2, 1] == 7 && grid[2, 2] == 7
-                || grid[1, 0] == 7 && grid[1, 1] == 7 && grid[1, 2] == 7)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
+             
+       
     }
 }
 
