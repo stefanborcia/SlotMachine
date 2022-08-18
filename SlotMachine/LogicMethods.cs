@@ -7,7 +7,27 @@ using System.Threading.Tasks;
 namespace SlotMachine
 {
     internal class LogicMethods
+
+
     {
+        public static int[,] FillArrayRandom()
+        {
+            Random lineRandom = new Random();
+
+            int[,] grid = new int[3, 3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    grid[i, j] = lineRandom.Next(1, 5);
+                    Console.Write(grid[i, j] + " ");
+                }
+                Console.WriteLine(" ");
+            }
+            return grid;
+        }
+
         public static bool CheckJackpotWin(int[,] grid)
         {
 

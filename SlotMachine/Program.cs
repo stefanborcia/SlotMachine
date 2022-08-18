@@ -25,23 +25,10 @@ namespace SlotMachine
 
             while (betting)
             {
-                Random lineRandom = new Random();
-                int cols = 3;
-                int rows = 3;
-                Console.WriteLine("-----");
-                int[,] grid = new int[cols, rows];
                 int winValue = 0;
+                
+                int[,]grid = LogicMethods.FillArrayRandom();
 
-                for (int i = 0; i < cols; i++)
-                {
-                    for (int j = 0; j < rows; j++)
-                    {
-                        grid[i, j] = lineRandom.Next(1, 5);
-                        Console.Write(grid[i, j] + " ");
-                    }
-                    Console.WriteLine(" ");
-                }
-                //Check Horizontal Winings
                 winValue = LogicMethods.CalculateLineWinings(grid);
 
                 if ( winValue > 0)
