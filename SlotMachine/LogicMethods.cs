@@ -91,8 +91,7 @@ namespace SlotMachine
             {                
                 UserInterface.ByeByeMessage();
                 return false;
-            }    
-            
+            }               
         }
 
     }

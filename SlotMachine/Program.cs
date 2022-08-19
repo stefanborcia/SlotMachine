@@ -52,13 +52,16 @@ namespace SlotMachine
                     betting = false;
                 }
                 if (credit <= 0)
-                {                  
-                  betting = LogicMethods.ContinuePlaying(); 
+                {
+                    betting = LogicMethods.ContinuePlaying();
+                    if (betting)
+                    {
+                        credit = LogicMethods.GetNumber();
+                    }
+
                 }
             }
         }
-
-
     }
 }
 
