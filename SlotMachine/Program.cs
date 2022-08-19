@@ -21,7 +21,7 @@ namespace SlotMachine
             {
                 int winValue = 0;
 
-                int[,] grid = LogicMethods.FillArrayRandom();
+                int[,] grid = LogicMethods.CreateGrid();
 
                 winValue = LogicMethods.CalculateLineWinings(grid);
 
@@ -51,23 +51,26 @@ namespace SlotMachine
                     UserInterface.PressSpaceBar();
                     betting = false;
                 }
-                if (credit <= 0)
+                if (credit <= 5)
                 {
-                    UserInterface.OutOfMoneyOrPutMoreMoney();
-                    string response = Console.ReadLine();
-                    response = response.ToLower();
-                    if (response == "y")
-                    {
-                        betting = true;
-                        UserInterface.PlayAgainMessage();
-                        int betAgain = Convert.ToInt32(Console.ReadLine());
-                        credit = betAgain;
-                    }
-                    else
-                    {
-                        betting = false;
-                        UserInterface.ByeByeMessage();
-                    }
+                    
+                   betting = LogicMethods.ContinuePlaying(credit); 
+
+                    //UserInterface.AskNextRound();
+                    //string response = Console.ReadLine();
+                    //response = response.ToLower();
+                    //if (response == "y")
+                    //{
+                    //    betting = true;
+                    //    UserInterface.PlayAgainMessage();
+                    //    int betAgain = Convert.ToInt32(Console.ReadLine());
+                    //    credit = betAgain;
+                    //}
+                    //else
+                    //{
+                    //    betting = false;
+                    //    UserInterface.ByeByeMessage();
+                    //}
                 }
             }
         }

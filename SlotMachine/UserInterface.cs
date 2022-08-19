@@ -41,9 +41,8 @@ namespace SlotMachine
         public static void PlayAgainMessage()
         {
             Console.WriteLine("We wish you best of luck !");
-            Console.WriteLine("How much you would like to play this time: ");
         }
-        public static void OutOfMoneyOrPutMoreMoney()
+        public static void AskNextRound()
         {
             Console.WriteLine("You are out of money ");
             Console.WriteLine("Would you like to add more money? Y or N ");

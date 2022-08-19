@@ -10,7 +10,7 @@ namespace SlotMachine
 
 
     {
-        public static int[,] FillArrayRandom()
+        public static int[,] CreateGrid()
         {
             Random lineRandom = new Random();
 
@@ -69,11 +69,31 @@ namespace SlotMachine
         {
             int credit = 0;
             bool succes = TryGetNumber("How much money would you like to play: ", out credit);
+            Console.WriteLine(" ");
             while (!succes)
             {
                 succes = TryGetNumber("Please enter a valid number: ", out credit);
             }
             return credit;
+        }
+        public static bool ContinuePlaying(int credit)
+        {
+            UserInterface.AskNextRound();
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            if (response == "y")
+            {               
+                UserInterface.PlayAgainMessage();
+                int betAgain = LogicMethods.GetNumber();
+                credit = betAgain;
+                return true;              
+            }
+            else
+            {                
+                UserInterface.ByeByeMessage();
+                return false;
+            }    
+            
         }
 
     }
