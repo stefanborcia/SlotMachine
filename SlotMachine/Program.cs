@@ -13,35 +13,29 @@ namespace SlotMachine
 
             UserInterface.DisplayWelcomeAndInfo();
 
-            int credit = 0;
-            bool succes = int.TryParse(Console.ReadLine(), out credit);
-            if (!succes)
-            {
-                Console.WriteLine("Please enter a number ! ");
-                succes = true;
-            }
+            int credit = LogicMethods.GetNumber();
 
             bool betting = true;
 
             while (betting)
             {
                 int winValue = 0;
-                
-                int[,]grid = LogicMethods.FillArrayRandom();
+
+                int[,] grid = LogicMethods.FillArrayRandom();
 
                 winValue = LogicMethods.CalculateLineWinings(grid);
 
-                if ( winValue > 0)
+                if (winValue > 0)
                 {
                     credit = credit + winValue;
-                    UserInterface.PrintLineWining(winValue);                   
+                    UserInterface.PrintLineWining(winValue);
                 }
                 //Check if he wins Jackpot 7-7-7 
-                bool jackpot = LogicMethods.CheckJackpotWin(grid);              
+                bool jackpot = LogicMethods.CheckJackpotWin(grid);
 
                 if (jackpot == true)
                 {
-                    UserInterface.PrintJackpotWin(winValue);  
+                    UserInterface.PrintJackpotWin(winValue);
                     credit = credit + 10;
                 }
                 credit--;
@@ -77,8 +71,8 @@ namespace SlotMachine
                 }
             }
         }
-             
-       
+
+
     }
 }
 
