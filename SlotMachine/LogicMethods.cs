@@ -76,7 +76,7 @@ namespace SlotMachine
             }
             return credit;
         }
-        public static bool ContinuePlaying(int credit)
+        public static bool ContinuePlaying()
         {
             UserInterface.AskNextRound();
             string response = Console.ReadLine();
@@ -85,7 +85,6 @@ namespace SlotMachine
             {               
                 UserInterface.PlayAgainMessage();
                 int betAgain = LogicMethods.GetNumber();
-                credit = betAgain;
                 return true;              
             }
             else

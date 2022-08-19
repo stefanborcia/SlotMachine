@@ -51,26 +51,9 @@ namespace SlotMachine
                     UserInterface.PressSpaceBar();
                     betting = false;
                 }
-                if (credit <= 5)
-                {
-                    
-                   betting = LogicMethods.ContinuePlaying(credit); 
-
-                    //UserInterface.AskNextRound();
-                    //string response = Console.ReadLine();
-                    //response = response.ToLower();
-                    //if (response == "y")
-                    //{
-                    //    betting = true;
-                    //    UserInterface.PlayAgainMessage();
-                    //    int betAgain = Convert.ToInt32(Console.ReadLine());
-                    //    credit = betAgain;
-                    //}
-                    //else
-                    //{
-                    //    betting = false;
-                    //    UserInterface.ByeByeMessage();
-                    //}
+                if (credit <= 0)
+                {                  
+                  betting = LogicMethods.ContinuePlaying(); 
                 }
             }
         }
