@@ -83,8 +83,7 @@ namespace SlotMachine
             response = response.ToLower();
             if (response == "y")
             {               
-                UserInterface.PlayAgainMessage();
-                int betAgain = LogicMethods.GetNumber();
+                UserInterface.PlayAgainMessage();                
                 return true;              
             }
             else

@@ -19,10 +19,10 @@ namespace SlotMachine
 
             while (betting)
             {
-                int winValue = 0;
-
+                
                 int[,] grid = LogicMethods.CreateGrid();
 
+                int winValue = 0;
                 winValue = LogicMethods.CalculateLineWinings(grid);
 
                 if (winValue > 0)
@@ -49,8 +49,8 @@ namespace SlotMachine
                 else
                 {
                     UserInterface.PressSpaceBar();
-                    betting = false;
-                }
+                     betting = false;
+                 }
                 if (credit <= 0)
                 {
                     betting = LogicMethods.ContinuePlaying();

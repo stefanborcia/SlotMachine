@@ -10,9 +10,9 @@ namespace SlotMachine
     {
         public static void DisplayWelcomeAndInfo()
         {
-            Console.WriteLine("                                               Welcome to the Slot Machine !!! Succes !!!");
+            Console.WriteLine("Welcome to the Slot Machine !!! Succes !!!");
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
-            Console.WriteLine(" ");
+            Console.WriteLine("-----");
         }
         public static void YourBalanceIs (int credit)
         {
@@ -49,7 +49,7 @@ namespace SlotMachine
         }
         public static void PressSpaceBar()
         {
-            Console.WriteLine(" ");
+            Console.WriteLine("-----");
             Console.WriteLine("You need to press the SpaceBar on keyboard to play");
         }
     }
