@@ -25,19 +25,20 @@ namespace SlotMachine
 
                  int winValue = LogicMethods.CalculateLineWinings(grid);
 
-                if (winValue > 0)
+                bool jackpot = LogicMethods.CheckJackpotWin(grid);
+                //Check if is Jackpot 7-7-7 
+                if (jackpot == true)
+                {
+                    pluralCredit = +10;
+                    UserInterface.PrintJackpotWin(pluralCredit);
+                }
+                //Check if line is wining                
+                if (winValue > 0 && jackpot == false)
                 {
                     pluralCredit = pluralCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
-                //Check if he wins Jackpot 7-7-7 
-                bool jackpot = LogicMethods.CheckJackpotWin(grid);
-
-                if (jackpot == true)
-                {                    
-                    pluralCredit =+ 10;
-                    UserInterface.PrintJackpotWin(pluralCredit);
-                }
+ 
                 pluralCredit--;
                 UserInterface.YourBalanceIs(pluralCredit);
 

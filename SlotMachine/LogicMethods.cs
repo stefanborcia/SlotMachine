@@ -12,16 +12,13 @@ namespace SlotMachine
     {
         public static int[,] CreateGrid()
         {
-            Random lineRandom = new Random();
-
             int[,] grid = new int[3, 3];
 
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    grid[i, j] = lineRandom.Next(2, 8);
-                    Console.Write(grid[i, j] + " ");
+                    UserInterface.ShowGridRandomNumbers(grid, i, j);
                 }
                 Console.WriteLine(" ");
             }

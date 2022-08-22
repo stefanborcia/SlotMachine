@@ -53,5 +53,12 @@ namespace SlotMachine
             Console.WriteLine("-----");
             Console.WriteLine("You need to press the SpaceBar on keyboard to play");
         }
+        public static void ShowGridRandomNumbers(int[,] grid, int i, int j)
+        {
+            Random lineRandom = new Random();
+            grid[i, j] = lineRandom.Next(2, 8);
+            Console.Write(grid[i, j] + " ");
+        }
+        
     }
 }
