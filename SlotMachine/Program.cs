@@ -42,15 +42,10 @@ namespace SlotMachine
                 UserInterface.YourBalanceIs(credit);
 
                 //askind user to pres spacebar to spin
-                if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
-                {
-                    betting = true;
+                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
+                {                  
+                    UserInterface.PressSpaceBar();                   
                 }
-                else
-                {
-                    UserInterface.PressSpaceBar();
-                     betting = false;
-                 }
                 if (credit <= 0)
                 {
                     betting = LogicMethods.ContinuePlaying();

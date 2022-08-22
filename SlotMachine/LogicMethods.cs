@@ -67,7 +67,7 @@ namespace SlotMachine
         }
         public static int GetNumber()
         {
-            int credit = 0;
+            int credit = 1;
             bool succes = TryGetNumber("How much money would you like to play: ", out credit);
             Console.WriteLine(" ");
             while (!succes)
