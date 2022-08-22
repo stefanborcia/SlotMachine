@@ -20,7 +20,7 @@ namespace SlotMachine
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    grid[i, j] = lineRandom.Next(1, 5);
+                    grid[i, j] = lineRandom.Next(2, 8);
                     Console.Write(grid[i, j] + " ");
                 }
                 Console.WriteLine(" ");
