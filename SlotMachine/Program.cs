@@ -22,8 +22,8 @@ namespace SlotMachine
                 
                 int[,] grid = LogicMethods.CreateGrid();
 
-                int winValue = 0;
-                winValue = LogicMethods.CalculateLineWinings(grid);
+
+                 int winValue = LogicMethods.CalculateLineWinings(grid);
 
                 if (winValue > 0)
                 {
