@@ -59,22 +59,22 @@ namespace SlotMachine
             }
             return 0;
         }
-        public static bool TryGetNumber(string message, out int credit)
+        public static bool TryGetNumber(string message, out int pluralCredit)
         {
             Console.WriteLine(message);
-            return int.TryParse(Console.ReadLine(), out credit);
+            return int.TryParse(Console.ReadLine(), out pluralCredit);
 
         }
         public static int GetNumber()
         {
-            int credit = 1;
-            bool success = TryGetNumber("How much money would you like to play: ", out credit);
+            int pluralCredit = 1;
+            bool success = TryGetNumber("How much money would you like to play: ", out pluralCredit);
             Console.WriteLine(" ");
             while (!success)
             {
-                success = TryGetNumber("Please enter a valid number: ", out credit);
+                success = TryGetNumber("Please enter a valid number: ", out pluralCredit);
             }
-            return credit;
+            return pluralCredit;
         }
         public static bool ContinuePlaying()
         {

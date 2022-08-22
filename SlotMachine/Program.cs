@@ -13,7 +13,7 @@ namespace SlotMachine
 
             UserInterface.DisplayWelcomeAndInfo();
 
-            int credit = LogicMethods.GetNumber();
+            int pluralCredit = LogicMethods.GetNumber();
 
             bool betting = true;
 
@@ -27,31 +27,31 @@ namespace SlotMachine
 
                 if (winValue > 0)
                 {
-                    credit = credit + winValue;
+                    pluralCredit = pluralCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
                 //Check if he wins Jackpot 7-7-7 
                 bool jackpot = LogicMethods.CheckJackpotWin(grid);
 
                 if (jackpot == true)
-                {
-                    UserInterface.PrintJackpotWin(winValue);
-                    credit = credit + 10;
+                {                    
+                    pluralCredit =+ 10;
+                    UserInterface.PrintJackpotWin(pluralCredit);
                 }
-                credit--;
-                UserInterface.YourBalanceIs(credit);
+                pluralCredit--;
+                UserInterface.YourBalanceIs(pluralCredit);
 
                 //askind user to pres spacebar to spin
                 while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
                 {                  
                     UserInterface.PressSpaceBar();                   
                 }
-                if (credit <= 0)
+                if (pluralCredit <= 0)
                 {
                     betting = LogicMethods.ContinuePlaying();
                     if (betting)
                     {
-                        credit = LogicMethods.GetNumber();
+                        pluralCredit = LogicMethods.GetNumber();
                     }
 
                 }

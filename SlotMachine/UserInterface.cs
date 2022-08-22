@@ -14,10 +14,10 @@ namespace SlotMachine
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
             Console.WriteLine("-----");
         }
-        public static void YourBalanceIs (int credit)
+        public static void YourBalanceIs (int pluralCredit)
         {
             Console.WriteLine("-----");
-            Console.WriteLine($"Your Balance is : {credit}$");
+            Console.WriteLine($"Your Balance is : {pluralCredit}$");
             Console.WriteLine("-----");
         }
         public static void PrintLineWining(int winValue)
