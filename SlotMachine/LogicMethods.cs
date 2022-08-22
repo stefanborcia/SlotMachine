@@ -68,11 +68,11 @@ namespace SlotMachine
         public static int GetNumber()
         {
             int credit = 1;
-            bool succes = TryGetNumber("How much money would you like to play: ", out credit);
+            bool success = TryGetNumber("How much money would you like to play: ", out credit);
             Console.WriteLine(" ");
-            while (!succes)
+            while (!success)
             {
-                succes = TryGetNumber("Please enter a valid number: ", out credit);
+                success = TryGetNumber("Please enter a valid number: ", out credit);
             }
             return credit;
         }
