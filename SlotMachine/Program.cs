@@ -28,7 +28,7 @@ namespace SlotMachine
                 //Check if is Jackpot 7-7-7 
                 if (jackpot == true)
                 {
-                    pluralCredit = +10;
+                    pluralCredit += 10;
                     UserInterface.PrintJackpotWin(pluralCredit);
                 }
                 //Check if line is wining                
