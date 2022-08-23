@@ -14,7 +14,7 @@ namespace SlotMachine
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
             Console.WriteLine("-----");
         }
-        public static void YourBalanceIs (int pluralCredit)
+        public static void PrintBalance (int pluralCredit)
         {
             Console.WriteLine("-----");
             Console.WriteLine($"Your Balance is : {pluralCredit}$");
@@ -53,11 +53,17 @@ namespace SlotMachine
             Console.WriteLine("-----");
             Console.WriteLine("You need to press the SpaceBar on keyboard to play");
         }
-        public static void ShowGridRandomNumbers(int[,] grid, int i, int j)
-        {
-            Random lineRandom = new Random();
-            grid[i, j] = lineRandom.Next(2, 8);
+        public static void PrintRandomNumbers(int[,] grid, int i, int j)
+        {           
             Console.Write(grid[i, j] + " ");
+        }
+        public static void PrintEmptyLine()
+        {
+            Console.WriteLine(" ");
+        }
+        public static void PrintAskBetMoney()
+        {
+            Console.WriteLine("How much money you would like to play ?");
         }
         
     }

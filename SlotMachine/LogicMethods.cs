@@ -13,14 +13,15 @@ namespace SlotMachine
         public static int[,] CreateGrid()
         {
             int[,] grid = new int[3, 3];
-
+            Random lineRandom = new Random();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    UserInterface.ShowGridRandomNumbers(grid, i, j);
+                    grid[i, j] = lineRandom.Next(2, 8);
+                    UserInterface.PrintRandomNumbers(grid, i , j);
                 }
-                Console.WriteLine(" ");
+                UserInterface.PrintEmptyLine();
             }
             return grid;
         }
@@ -62,18 +63,19 @@ namespace SlotMachine
             return int.TryParse(Console.ReadLine(), out pluralCredit);
 
         }
-        public static int GetNumber()
+        public static int ReadNumber()
         {
-            int pluralCredit = 1;
-            bool success = TryGetNumber("How much money would you like to play: ", out pluralCredit);
-            Console.WriteLine(" ");
-            while (!success)
+            int pluralCredit = 0;
+            UserInterface.PrintAskBetMoney();
+            bool success = int.TryParse(Console.ReadLine(), out pluralCredit);
+            UserInterface.PrintEmptyLine();
+            while (!success || pluralCredit <= 0)
             {
                 success = TryGetNumber("Please enter a valid number: ", out pluralCredit);
             }
             return pluralCredit;
         }
-        public static bool ContinuePlaying()
+        public static bool ReadContinuePlaying()
         {
             UserInterface.AskNextRound();
             string response = Console.ReadLine();
