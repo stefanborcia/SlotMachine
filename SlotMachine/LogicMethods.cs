@@ -19,7 +19,7 @@ namespace SlotMachine
                 for (int j = 0; j < 3; j++)
                 {
                     grid[i, j] = lineRandom.Next(2, 8);
-                    UserInterface.PrintRandomNumbers(grid, i , j);
+                    UserInterface.PrintRandomNumbers(grid, i, j);
                 }
                 UserInterface.PrintEmptyLine();
             }
@@ -57,21 +57,17 @@ namespace SlotMachine
             }
             return 0;
         }
-        public static bool TryGetNumber(string message, out int pluralCredit)
-        {
-            Console.WriteLine(message);
-            return int.TryParse(Console.ReadLine(), out pluralCredit);
 
-        }
         public static int ReadNumber()
         {
-            int pluralCredit = 0;
+            int pluralCredit;
             UserInterface.PrintAskBetMoney();
             bool success = int.TryParse(Console.ReadLine(), out pluralCredit);
-            UserInterface.PrintEmptyLine();
-            while (!success || pluralCredit <= 0)
+            UserInterface.PrintEmptyLine();            
+           while (!success || pluralCredit <= 0)
             {
-                success = TryGetNumber("Please enter a valid number: ", out pluralCredit);
+                Console.WriteLine("Please enter a valid number"); 
+                success = int.TryParse(Console.ReadLine(), out pluralCredit);
             }
             return pluralCredit;
         }
@@ -91,6 +87,5 @@ namespace SlotMachine
                 return false;
             }               
         }
-
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SlotMachine
+﻿namespace SlotMachine
 {
     internal class Program
     {
@@ -13,13 +7,13 @@ namespace SlotMachine
 
             UserInterface.DisplayWelcomeAndInfo();
 
+
             int pluralCredit = LogicMethods.ReadNumber();
 
             bool betting = true;
 
             while (betting)
             {
-                
                 int[,] grid = LogicMethods.CreateGrid();
 
                 int winValue = LogicMethods.CalculateLineWinings(grid);
@@ -37,14 +31,14 @@ namespace SlotMachine
                     pluralCredit = pluralCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
- 
+
                 pluralCredit--;
                 UserInterface.PrintBalance(pluralCredit);
 
                 //askind user to pres spacebar to spin
                 while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
-                {                  
-                    UserInterface.PressSpaceBar();                   
+                {
+                    UserInterface.PressSpaceBar();
                 }
                 if (pluralCredit <= 0)
                 {
