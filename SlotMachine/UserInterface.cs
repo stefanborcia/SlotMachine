@@ -19,7 +19,12 @@ namespace SlotMachine
             Console.WriteLine("-----");
             Console.WriteLine($"Your Balance is : {pluralCredit}$");
             Console.WriteLine("-----");
-            Console.WriteLine("Press SpaceBar To Spin");
+            
+        }
+        public static void PrintPressSpaceBar()
+        {
+            Console.WriteLine("-----");
+            Console.WriteLine("Press SpaceBar To Spin");            
         }
         public static void PrintLineWining(int winValue)
         {

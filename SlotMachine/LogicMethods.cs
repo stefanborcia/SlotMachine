@@ -60,16 +60,19 @@ namespace SlotMachine
 
         public static int ReadNumber()
         {
-            int pluralCredit;
+            int betCredit = 0;
             UserInterface.PrintAskBetMoney();
-            bool success = int.TryParse(Console.ReadLine(), out pluralCredit);
             UserInterface.PrintEmptyLine();            
-           while (!success || pluralCredit <= 0)
+           while ( betCredit <= 0)
             {
-                Console.WriteLine("Please enter a valid number"); 
-                success = int.TryParse(Console.ReadLine(), out pluralCredit);
+                int.TryParse(Console.ReadLine(), out betCredit);               
+                if(betCredit < 1)
+                {
+                    Console.WriteLine("Please enter a valid number");
+                }    
+                
             }
-            return pluralCredit;
+            return betCredit;
         }
         public static bool ReadContinuePlaying()
         {

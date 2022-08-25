@@ -7,45 +7,45 @@
 
             UserInterface.DisplayWelcomeAndInfo();
 
-
-            int pluralCredit = LogicMethods.ReadNumber();
-
+            
+            int betCredit = LogicMethods.ReadNumber();
+           
             bool betting = true;
 
             while (betting)
             {
+                UserInterface.PrintBalance(betCredit);
                 int[,] grid = LogicMethods.CreateGrid();
-
+                UserInterface.PrintPressSpaceBar();
                 int winValue = LogicMethods.CalculateLineWinings(grid);
 
                 bool jackpot = LogicMethods.CheckJackpotWin(grid);
                 //Check if is Jackpot 7-7-7 
                 if (jackpot == true)
                 {
-                    pluralCredit += 10;
-                    UserInterface.PrintJackpotWin(pluralCredit);
+                    betCredit += 10;
+                    UserInterface.PrintJackpotWin(betCredit);
                 }
                 //Check if line is wining                
                 if (winValue > 0 && jackpot == false)
                 {
-                    pluralCredit = pluralCredit + winValue;
+                    betCredit = betCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
 
-                pluralCredit--;
-                UserInterface.PrintBalance(pluralCredit);
+                betCredit--;
 
                 //askind user to pres spacebar to spin
                 while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
                 {
                     UserInterface.PressSpaceBar();
                 }
-                if (pluralCredit <= 0)
+                if (betCredit <= 0)
                 {
                     betting = LogicMethods.ReadContinuePlaying();
                     if (betting)
                     {
-                        pluralCredit = LogicMethods.ReadNumber();
+                        betCredit = LogicMethods.ReadNumber();
                     }
 
                 }
