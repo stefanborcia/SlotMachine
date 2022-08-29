@@ -19,9 +19,7 @@ namespace SlotMachine
                 for (int j = 0; j < 3; j++)
                 {
                     grid[i, j] = lineRandom.Next(2, 8);
-                    UserInterface.PrintRandomNumbers(grid, i, j);
                 }
-                UserInterface.PrintEmptyLine();
             }
             return grid;
         }

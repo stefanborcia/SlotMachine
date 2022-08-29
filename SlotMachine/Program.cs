@@ -6,7 +6,6 @@
         {
 
             UserInterface.DisplayWelcomeAndInfo();
-
             
             int betCredit = LogicMethods.ReadNumber();
            
@@ -15,8 +14,10 @@
             while (betting)
             {
                 UserInterface.PrintBalance(betCredit);
-                int[,] grid = LogicMethods.CreateGrid();
-                UserInterface.PrintPressSpaceBar();
+                int[,] grid = LogicMethods.CreateGrid() ;
+                UserInterface.PrintRandomNumbers();
+                UserInterface.PressSpaceBar();
+
                 int winValue = LogicMethods.CalculateLineWinings(grid);
 
                 bool jackpot = LogicMethods.CheckJackpotWin(grid);
