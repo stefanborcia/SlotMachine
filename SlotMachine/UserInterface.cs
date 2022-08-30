@@ -19,7 +19,6 @@ namespace SlotMachine
             Console.WriteLine("-----");
             Console.WriteLine($"Your Balance is : {pluralCredit}$");
             Console.WriteLine("-----");
-            
         }
         public static void PrintPressSpaceBar()
         {
@@ -37,16 +36,6 @@ namespace SlotMachine
             Console.WriteLine("*********************************************");
             Console.WriteLine($" Congratulation !!!  Jackpot !!! You won {winValue}$");
             Console.WriteLine("**********************************************");
-
-        }
-        public static void ByeByeMessage()
-        {
-            Console.WriteLine("Thank you for playing !");
-            Console.WriteLine("Maybe next time more luck !");
-        }
-        public static void PlayAgainMessage()
-        {
-            Console.WriteLine("We wish you best of luck !");
         }
         public static void AskNextRound()
         {
@@ -60,7 +49,6 @@ namespace SlotMachine
         }
         public static void PrintRandomNumbers(int[,] grid)
         {
-           
             for (int i = 0; i < grid.GetLength(0); i++)
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
@@ -69,8 +57,6 @@ namespace SlotMachine
                 }
                 Console.WriteLine(" ");
             }
-            
-            
         }
         public static void PrintEmptyLine()
         {
@@ -80,12 +66,29 @@ namespace SlotMachine
         {
             int betCredit = 0;
             Console.WriteLine("How much money you would like to play ?");
-            int.TryParse(Console.ReadLine(), out betCredit);
-            if (betCredit < 1)
+            
+            while (betCredit <= 0)
             {
+                int.TryParse(Console.ReadLine(), out betCredit);
                 Console.WriteLine("Please enter a valid number");
             }
             return betCredit;
+        }
+        public static bool ReadContinuePlaying()
+        {
+            string response = Console.ReadLine();
+            response = response.ToLower();
+            if (response == "y")
+            {
+                Console.WriteLine("We wish you best of luck !");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Thank you for playing !");
+                Console.WriteLine("Maybe next time more luck !");
+                return false;
+            }
         }
     }
 }

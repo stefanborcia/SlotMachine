@@ -45,7 +45,7 @@
                 if (betCredit <= 0)
                 {
                     UserInterface.AskNextRound();
-                    betting = LogicMethods.ReadContinuePlaying();
+                    betting = UserInterface.ReadContinuePlaying() ;
                     
                     if (betting)
                     {

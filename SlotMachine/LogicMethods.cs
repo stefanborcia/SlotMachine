@@ -56,21 +56,5 @@ namespace SlotMachine
             }
             return 0;
         }
-        public static bool ReadContinuePlaying()
-        {
-            
-            string response = Console.ReadLine();
-            response = response.ToLower();
-            if (response == "y")
-            {               
-                UserInterface.PlayAgainMessage();                
-                return true;              
-            }
-            else
-            {                
-                UserInterface.ByeByeMessage();
-                return false;
-            }               
-        }
     }
 }
