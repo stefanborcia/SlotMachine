@@ -12,8 +12,9 @@ namespace SlotMachine
     {
         public static int[,] CreateGrid()
         {
-            int[,] grid = new int[3, 3];
             Random lineRandom = new Random();
+
+            int[,] grid = new int[3,3];
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -55,26 +56,9 @@ namespace SlotMachine
             }
             return 0;
         }
-
-        public static int ReadNumber()
-        {
-            int betCredit = 0;
-            UserInterface.PrintAskBetMoney();
-            UserInterface.PrintEmptyLine();            
-           while ( betCredit <= 0)
-            {
-                int.TryParse(Console.ReadLine(), out betCredit);               
-                if(betCredit < 1)
-                {
-                    Console.WriteLine("Please enter a valid number");
-                }    
-                
-            }
-            return betCredit;
-        }
         public static bool ReadContinuePlaying()
         {
-            UserInterface.AskNextRound();
+            
             string response = Console.ReadLine();
             response = response.ToLower();
             if (response == "y")

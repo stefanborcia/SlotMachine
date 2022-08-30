@@ -7,15 +7,16 @@
 
             UserInterface.DisplayWelcomeAndInfo();
             
-            int betCredit = LogicMethods.ReadNumber();
+            int betCredit = UserInterface.ReadNumber();
            
             bool betting = true;
 
             while (betting)
             {
                 UserInterface.PrintBalance(betCredit);
-                int[,] grid = LogicMethods.CreateGrid() ;
-                UserInterface.PrintRandomNumbers();
+                int[,] grid = LogicMethods.CreateGrid();
+                UserInterface.PrintRandomNumbers(grid);
+
                 UserInterface.PressSpaceBar();
 
                 int winValue = LogicMethods.CalculateLineWinings(grid);
@@ -43,10 +44,12 @@
                 }
                 if (betCredit <= 0)
                 {
+                    UserInterface.AskNextRound();
                     betting = LogicMethods.ReadContinuePlaying();
+                    
                     if (betting)
                     {
-                        betCredit = LogicMethods.ReadNumber();
+                        betCredit = UserInterface.ReadNumber();
                     }
 
                 }

@@ -58,28 +58,34 @@ namespace SlotMachine
             Console.WriteLine("-----");
             Console.WriteLine("You need to press the SpaceBar on keyboard to play");
         }
-        public static void PrintRandomNumbers()
+        public static void PrintRandomNumbers(int[,] grid)
         {
-            Random lineRandom = new Random();
-            int[,] grid = new int[3, 3];
-            for (int i = 0; i < 3; i++)
+           
+            for (int i = 0; i < grid.GetLength(0); i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < grid.GetLength(1); j++)
                 {
-                    grid[i, j] = lineRandom.Next(2, 8);
-                    Console.Write(grid[i, j] + " ");
+                    Console.Write(grid[i,j] + " ");
                 }
                 Console.WriteLine(" ");
             }
+            
+            
         }
         public static void PrintEmptyLine()
         {
             Console.WriteLine(" ");
         }
-        public static void PrintAskBetMoney()
+        public static int ReadNumber()
         {
+            int betCredit = 0;
             Console.WriteLine("How much money you would like to play ?");
+            int.TryParse(Console.ReadLine(), out betCredit);
+            if (betCredit < 1)
+            {
+                Console.WriteLine("Please enter a valid number");
+            }
+            return betCredit;
         }
-        
     }
 }
