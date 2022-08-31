@@ -43,21 +43,23 @@
                 }
                 if (betting)
                 {
-                    UserInterface.AskNextRound();
-                    if (UserInterface.ReadContinuePlaying())
-                    {
-                        UserInterface.PrintSucces();
-                        betting = true;
-                    }
-                    else
-                    {
-                        UserInterface.PrintByeByeMessage();
-                        betting = false;
-                    }
-                    while (betCredit < 0)
+                    while (betCredit <= 0)
                     {
                         betCredit = UserInterface.ReadNumber();
+                        UserInterface.AskNextRound();
+                        if (UserInterface.ReadContinuePlaying())
+                        {
+                            UserInterface.PrintSucces();
+                            betting = true;
+                        }
+                        else
+                        {
+                            UserInterface.PrintByeByeMessage();
+                            betting = false;
+                        }
                     }
+                    
+                    
                 }
 
                 
