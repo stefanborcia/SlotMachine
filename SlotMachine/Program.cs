@@ -23,8 +23,8 @@
                 //Check if is Jackpot 7-7-7 
                 if (jackpot == true)
                 {
-                    winValue = betCredit + 10;
-                    UserInterface.PrintJackpotWin(winValue);
+                    betCredit = betCredit + 10;
+                    UserInterface.PrintJackpotWin(betCredit);
                 }
                 //Check if line is wining                
                 if (winValue > 0 && jackpot == false)
@@ -32,37 +32,40 @@
                     betCredit = betCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
-
-                betCredit--;
                 UserInterface.PrintPressSpaceBar();
-
                 //askind user to pres spacebar to spin
-                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
-                {
-                    UserInterface.PrintPressSpaceBar();
-                }
+                
+                betCredit--;
+               
                 if (betting)
                 {
                     while (betCredit <= 0)
                     {
-                        betCredit = UserInterface.ReadNumber();
                         UserInterface.AskNextRound();
+                        
                         if (UserInterface.ReadContinuePlaying())
                         {
+                           
                             UserInterface.PrintSucces();
-                            betting = true;
+                            betCredit = UserInterface.ReadNumber();
+                           
                         }
                         else
                         {
                             UserInterface.PrintByeByeMessage();
                             betting = false;
                         }
+
+                    
                     }
                     
                     
                 }
 
-                
+                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
+                {
+                    UserInterface.PrintPressSpaceBar();
+                }
 
             }
         }

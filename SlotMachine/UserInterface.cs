@@ -23,6 +23,7 @@
         public static void PrintSucces()
         {
             Console.WriteLine("We wish you best of luck !");
+            Console.WriteLine("**************************");
         }
         public static void PrintByeByeMessage()
         {
@@ -56,7 +57,7 @@
                 Console.WriteLine(" ");
             }
         }
-        public static int ReadNumber()
+        public static int  ReadNumber()
         {
             int betCredit = 0;
             Console.WriteLine("How much money you would like to play ?");
@@ -64,7 +65,7 @@
             while (betCredit <= 0)
             {
                 int.TryParse(Console.ReadLine(), out betCredit);
-                if (betCredit < 1)
+                if (betCredit <=0)
                 {
                     Console.WriteLine("Please enter a valid number");
                 }
