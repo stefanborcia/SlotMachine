@@ -13,6 +13,7 @@
 
             while (betting)
             {
+
                 UserInterface.PrintBalance(betCredit);
                 int[,] grid = LogicMethods.CreateGrid();
                 UserInterface.PrintGrid(grid);
@@ -32,40 +33,43 @@
                     betCredit = betCredit + winValue;
                     UserInterface.PrintLineWining(winValue);
                 }
-                UserInterface.PrintPressSpaceBar();
-                //askind user to pres spacebar to spin
-                
+
                 betCredit--;
-               
+                if(betCredit == 1 || betCredit > 1)
+                {
+                    UserInterface.PrintPressSpaceBar();
+                }
+                
+                //askind user to pres spacebar to spin
+                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
+                {
+                        UserInterface.PrintPressSpaceBar();
+                }
                 if (betting)
                 {
-                    while (betCredit <= 0)
+                    if (betCredit < 1)
                     {
                         UserInterface.AskNextRound();
-                        
+
                         if (UserInterface.ReadContinuePlaying())
                         {
-                           
+                            
                             UserInterface.PrintSucces();
                             betCredit = UserInterface.ReadNumber();
-                           
+                            betting = true;
                         }
                         else
                         {
                             UserInterface.PrintByeByeMessage();
                             betting = false;
                         }
+                        
 
-                    
                     }
                     
-                    
                 }
 
-                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
-                {
-                    UserInterface.PrintPressSpaceBar();
-                }
+                
 
             }
         }

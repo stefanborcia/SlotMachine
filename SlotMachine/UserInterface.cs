@@ -38,8 +38,9 @@
         }
         public static void AskNextRound()
         {
+            Console.WriteLine("-----");
             Console.WriteLine("You are out of money ");
-            Console.WriteLine("Would you like to add more money? Y or N ");
+            Console.Write("Would you like to add more money? Y or N: ");
         }
         public static void PrintPressSpaceBar()
         {
@@ -60,14 +61,14 @@
         public static int  ReadNumber()
         {
             int betCredit = 0;
-            Console.WriteLine("How much money you would like to play ?");
+            Console.Write("How much money you would like to play: ");
             
             while (betCredit <= 0)
             {
                 int.TryParse(Console.ReadLine(), out betCredit);
                 if (betCredit <=0)
                 {
-                    Console.WriteLine("Please enter a valid number");
+                    Console.Write("Please enter a valid number: ");
                 }
             }
             return betCredit;
