@@ -6,13 +6,13 @@
         {
             Console.WriteLine("Welcome to the Slot Machine !!! Success !!!");
             Console.WriteLine("Spin by pressing the SpaceBar on Keyboard");
-            Console.WriteLine("-----");
+            Console.WriteLine("-------------------------------------------");
         }
         public static void PrintBalance(int pluralCredit)
         {
             Console.WriteLine("-----");
             Console.WriteLine($"Your Balance is : {pluralCredit}$");
-            Console.WriteLine("-----");
+
         }
         public static void PrintLineWining(int winValue)
         {
@@ -22,6 +22,7 @@
         }
         public static void PrintSucces()
         {
+            Console.WriteLine("**************************");
             Console.WriteLine("We wish you best of luck !");
             Console.WriteLine("**************************");
         }
@@ -39,13 +40,15 @@
         public static void AskNextRound()
         {
             Console.WriteLine("-----");
+            Console.WriteLine("Your balance is : 0$");
             Console.WriteLine("You are out of money ");
             Console.Write("Would you like to add more money? Y or N: ");
         }
         public static void PrintPressSpaceBar()
         {
             Console.WriteLine("-----");
-            Console.WriteLine("You need to press the SpaceBar on keyboard to play");
+            Console.WriteLine("Press SpaceBar to Spin");
+            Console.WriteLine("-----");
         }
         public static void PrintGrid(int[,] grid)
         {
