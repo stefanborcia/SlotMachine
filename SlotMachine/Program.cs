@@ -14,8 +14,14 @@
             while (betting)
             {
                 UserInterface.PrintBalance(betCredit);
-                UserInterface.PrintPressSpaceBar();
                 
+                UserInterface.PrintPressSpaceBar();
+                //askind user to pres spacebar to spin
+                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
+                {
+                    UserInterface.PrintPressSpaceBar();
+                }
+
                 int[,] grid = LogicMethods.CreateGrid();
                 UserInterface.PrintGrid(grid);
                 
@@ -39,11 +45,7 @@
                 betCredit--;
                
                 
-                //askind user to pres spacebar to spin
-                while (!(Console.ReadKey(true).Key == ConsoleKey.Spacebar))
-                {
-                        UserInterface.PrintPressSpaceBar();
-                }
+                
                 if (betting)
                 {
                     if (betCredit < 1)
